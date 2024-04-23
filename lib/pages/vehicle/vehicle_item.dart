@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:satellite/design/colors.dart';
 import 'package:satellite/design/dimensions.dart';
@@ -7,7 +6,14 @@ import 'package:satellite/design/styles.dart';
 
 class VehicleItem extends StatelessWidget {
   final Function() onTap;
-  const VehicleItem({super.key, required this.onTap});
+  final String title;
+
+  const VehicleItem({
+    super.key,
+    required this.onTap,
+    required this.title,
+  });
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,7 @@ class VehicleItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(
                 left: padding8, right: padding16, top: padding8),
-            child: Row(children: <Widget>[MotorcycleImage, _title(), _state()]),
+            child: Row(children: <Widget>[roverImage, _title(), _state()]),
           ),
         ),
       ),
@@ -37,33 +43,15 @@ class VehicleItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: padding6, right: padding6),
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text('BMW GS-7638',
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: hint1TextStyle),
-              false
-                  ? Text(
-                      'Нет водителя',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: body2TextStyle
-                    )
-                  : RichText(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'Водитель ',
-                                style:  body2TextStyle),
-                            TextSpan(
-                                text: 'Tom',
-                                style: hint1TextStyle),
-                          ]))
-            ]),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: hint1TextStyle),
+          ],
+        ),
       ),
     );
   }
@@ -74,9 +62,9 @@ class VehicleItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          statePickupImage,
-          Text(
-            'pickup',
+          cosmoImage,
+          const Text(
+            'смотреть',
             style: pickupTextStyle,
           )
         ],
