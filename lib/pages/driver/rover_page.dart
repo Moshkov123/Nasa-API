@@ -55,7 +55,7 @@ class RoverPage extends StatelessWidget {
   }
 
   Future<List<dynamic>> _fetchRoverPhotos(String roverName) async {
-    final String apiKey = 'LxKeSebJodsd2OSu2VU7kKlSBRXGuAk28KM0zOe5'; // Replace with your actual API key
+    const String apiKey = 'LxKeSebJodsd2OSu2VU7kKlSBRXGuAk28KM0zOe5'; // Replace with your actual API key
     final String url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName.toLowerCase()}/photos?sol=1000&api_key=$apiKey';
     final response = await http.get(Uri.parse(url));
 
