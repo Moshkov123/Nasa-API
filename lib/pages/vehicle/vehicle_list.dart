@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:satellite/pages/vehicle/vehicle_item.dart';
 import '../../design/utils/size_utils.dart';
-import '../driver/rover_page.dart';
+import '../rover/rover_page.dart';
 import "/design/dimensions.dart";
 
 class VehicleList extends StatelessWidget {
