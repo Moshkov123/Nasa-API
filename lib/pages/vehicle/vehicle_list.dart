@@ -3,6 +3,11 @@ import 'package:satellite/pages/vehicle/vehicle_item.dart';
 import '../../design/utils/size_utils.dart';
 import '../rover/rover_page.dart';
 import "/design/dimensions.dart";
+import 'package:flutter/material.dart';
+import 'package:satellite/pages/vehicle/vehicle_item.dart';
+import '../../design/utils/size_utils.dart';
+import '../rover/rover_page.dart';
+import "/design/dimensions.dart";
 
 class VehicleList extends StatelessWidget {
   const VehicleList({super.key});
@@ -11,7 +16,6 @@ class VehicleList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       _list(context),
-
     ]);
   }
 
@@ -31,6 +35,8 @@ class VehicleList extends StatelessWidget {
       },
       itemBuilder: (BuildContext context, int index) {
         return VehicleItem(
+          index: index, // Передача index в VehicleItem
+          vehicleNames: vehicleNames, // Передача vehicleNames в VehicleItem
           onTap: () async {
             await _showDriverPage(context, vehicleNames[index]);
           },
@@ -40,8 +46,6 @@ class VehicleList extends StatelessWidget {
     );
   }
 
-
-
   Future<void> _showDriverPage(BuildContext context, String roverName) async {
     await Navigator.push(
       context,
@@ -50,6 +54,4 @@ class VehicleList extends StatelessWidget {
       ),
     );
   }
-
 }
-

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:satellite/design/dimensions.dart';
 import 'package:satellite/design/styles.dart';
 
+import '../../design/logic/imageLogic.dart';
+
 
 class SatellitePhotoItem extends StatelessWidget {
   final String imageUrl;
@@ -17,13 +19,14 @@ class SatellitePhotoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size adjustedScreenSize = ScreenUtil.calculateAdjustedScreenSize(context);
     return Card(
       child: Column(
         children: [
           Image.network(
             imageUrl,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.3,
+            width: adjustedScreenSize.width,
+            height: adjustedScreenSize.height,
             fit: BoxFit.cover,
           ),
           Padding(

@@ -4,16 +4,21 @@ import 'package:satellite/design/dimensions.dart';
 import 'package:satellite/design/images.dart';
 import 'package:satellite/design/styles.dart';
 
+import '../rover/rover_page.dart';
+
 class VehicleItem extends StatelessWidget {
   final Function() onTap;
   final String title;
+  final int index;
+  final List<String> vehicleNames;
 
   const VehicleItem({
-    super.key,
+    Key? key,
     required this.onTap,
     required this.title,
-  });
-
+    required this.index,
+    required this.vehicleNames,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,11 @@ class VehicleItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(
                 left: padding8, right: padding16, top: padding8),
-            child: Row(children: <Widget>[roverImage, _title(), _state()]),
+            child: Row(children: <Widget>[
+              roverImage,
+              _title(),
+              _state(context, index, vehicleNames),
+            ]),
           ),
         ),
       ),
@@ -56,18 +65,29 @@ class VehicleItem extends StatelessWidget {
     );
   }
 
-  Widget _state() {
+  Widget _state(BuildContext context, int index, List<String> vehicleNames) {
     return InkWell(
-      onTap: () {},
+      onTap: () async {
+        await _showDriverPage(context, vehicleNames[index]);
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          cosmoImage,
+          cameraImage,
           const Text(
             'смотреть',
             style: pickupTextStyle,
-          )
+          ),
         ],
+      ),
+    );
+  }
+
+  Future<void> _showDriverPage(BuildContext context, String roverName) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RoverPage(roverName: roverName), // Pass the roverName
       ),
     );
   }

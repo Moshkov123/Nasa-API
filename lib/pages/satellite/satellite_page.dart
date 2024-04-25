@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:satellite/design/colors.dart';
-import 'package:satellite/design/images.dart';
-import 'package:satellite/design/styles.dart';
+import '../../api/apiKey.dart';
 import 'satellite_photo_item.dart';
 
 class SatellitePage extends StatelessWidget {
@@ -39,8 +37,7 @@ class SatellitePage extends StatelessWidget {
   }
 
   Future<List<dynamic>> _fetchSatellitePhotos() async {
-    const String apiKey = 'DEMO_KEY'; // Replace with your actual API key
-    final String url = 'https://api.nasa.gov/planetary/apod?api_key=$apiKey&count=50';
+    final String url = 'https://api.nasa.gov/planetary/apod?api_key=$ApiKey&count=40';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
