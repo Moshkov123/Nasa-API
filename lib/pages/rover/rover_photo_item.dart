@@ -70,12 +70,12 @@ class RoverPhotoItem extends StatelessWidget {
     final savedDir = await getDownloadsDirectory();
     final savedImage = await file.copy('${savedDir?.path}/$imageName.jpg');
     print('Image saved at: ${savedImage.path}');
-
     // Notify the user that the image has been downloaded
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Image downloaded successfully.')),
     );
   }
+
   void _showImageDialog(BuildContext context, String imageUrl) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
