@@ -76,7 +76,6 @@ class RoverPhotoItem extends StatelessWidget {
       SnackBar(content: Text('Image downloaded successfully.')),
     );
   }
-
   void _showImageDialog(BuildContext context, String imageUrl) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
