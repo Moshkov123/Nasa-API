@@ -64,8 +64,8 @@ class RoverPhotoItem extends StatelessWidget {
       adjustedScreenHeight = screenHeight * 0.35; // 35% of the screen height
     } else {
       // Device is in landscape mode, make the image 35% of the screen width
-      adjustedScreenWidth = screenWidth * 0.8;
-      adjustedScreenHeight = screenHeight*0.8; // Full screen height
+      adjustedScreenWidth = screenWidth*0.95;
+      adjustedScreenHeight = screenHeight*0.75; // Full screen height
     }
 
     showDialog(
