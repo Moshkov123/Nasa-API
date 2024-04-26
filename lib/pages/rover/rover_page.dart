@@ -6,6 +6,7 @@ import 'package:satellite/design/images.dart';
 import 'package:satellite/design/styles.dart';
 import '../../api/apiKey.dart';
 import 'rover_photo_item.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class RoverPage extends StatelessWidget {
   final String roverName;

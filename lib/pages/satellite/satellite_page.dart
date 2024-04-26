@@ -15,6 +15,7 @@ class SatellitePage extends StatefulWidget {
 
 class _SatellitePageState extends State<SatellitePage> {
   Future<List<dynamic>>? _future;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class _SatellitePageState extends State<SatellitePage> {
         if (snapshot.hasData) {
           List<dynamic> photos = snapshot.data!;
           return ListView.separated(
+            controller: _scrollController,
             itemCount: photos.length + 1, // Добавляем к количеству статей еще один элемент - кнопку
             itemBuilder: (context, index) {
               if (index == photos.length) {
@@ -74,14 +76,20 @@ class _SatellitePageState extends State<SatellitePage> {
             setState(() {
               _future = _fetchSatellitePhotos();
             });
+            _scrollController.animateTo(
+              0.0,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeOut,
+            );
           },
         ),
       ),
     );
   }
 
+
   Future<List<dynamic>> _fetchSatellitePhotos() async {
-    const String url = 'https://api.nasa.gov/planetary/apod?api_key=$ApiKey&count=10';
+    const String url = 'https://api.nasa.gov/planetary/apod?api_key=$ApiKey&count=8';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
