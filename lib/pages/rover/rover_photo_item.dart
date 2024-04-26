@@ -5,9 +5,6 @@ import 'package:satellite/design/styles.dart';
 import '../../design/images.dart';
 import '../../design/logic/imageLogic.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:path/path.dart' as path;
-
-
 
 
 class RoverPhotoItem extends StatelessWidget {
@@ -68,8 +65,9 @@ class RoverPhotoItem extends StatelessWidget {
     // Proceed with the download
     var file = await DefaultCacheManager().getSingleFile(url);
     final savedDir = await getDownloadsDirectory();
-    final savedImage = await file.copy('${savedDir?.path}/$imageName.jpg');
+    final savedImage = await file.copy('${savedDir.path}/$imageName.jpg');
     print('Image saved at: ${savedImage.path}');
+
     // Notify the user that the image has been downloaded
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Image downloaded successfully.')),
