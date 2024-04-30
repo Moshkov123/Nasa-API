@@ -4,7 +4,6 @@ import 'package:satellite/pages/vehicle/vehicle_page.dart';
 void main() {
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({key}) : super(key: key);
 
