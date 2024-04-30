@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:satellite/pages/vehicle/vehicle_list.dart';
 import '../../design/images.dart';
 import '../../design/styles.dart';
+import '../favourites/favourites_page.dart';
 import '../satellite/satellite_page.dart';
 import "/design/colors.dart";
 
@@ -14,8 +15,8 @@ class VehiclePage extends StatefulWidget {
 
 class _VehiclePageState extends State<VehiclePage> {
   int _currentPage = 0;
-  final List<Widget> _pages = [VehicleList(), SatellitePage()];
-  final List<String> _appBarTitles = ['Марсоходы', 'Cтатьи'];
+  final List<Widget> _pages = [VehicleList(), SatellitePage(),FavouritesPage()];
+  final List<String> _appBarTitles = ['Марсоходы', 'Cтатьи','Избранное'];
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,7 @@ class _VehiclePageState extends State<VehiclePage> {
         items: [
           BottomNavigationBarItem(icon: roverImage, label: 'Марсоходы'),
           BottomNavigationBarItem(icon: ArticlesImage, label: 'Cтатьи' ),
+          BottomNavigationBarItem(icon: starImage, label: 'Избранное' ),
         ],
         currentIndex: _currentPage,
         onTap: (int index) {

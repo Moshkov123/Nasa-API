@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:satellite/pages/vehicle/vehicle_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,13 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Марсоходы',
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const VehiclePage(),
+      home: VehiclePage(),
     );
   }
 }

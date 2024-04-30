@@ -1,10 +1,8 @@
-import 'package:permission_handler/permission_handler.dart';
+
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:satellite/design/styles.dart';
 import '../../design/images.dart';
 import '../../design/logic/imageLogic.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 
 class RoverPhotoItem extends StatelessWidget {
@@ -55,23 +53,23 @@ class RoverPhotoItem extends StatelessWidget {
     );
   }
   Future<void> _downloadImage(BuildContext context, String url, String imageName) async {
-    var status = await Permission.storage.status;
-    if (status != PermissionStatus.granted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Storage permission is required to download images.')),
-      );
-      return;
-    }
-    // Proceed with the download
-    var file = await DefaultCacheManager().getSingleFile(url);
-    final savedDir = await getDownloadsDirectory();
-    final savedImage = await file.copy('${savedDir.path}/$imageName.jpg');
-    print('Image saved at: ${savedImage.path}');
-
-    // Notify the user that the image has been downloaded
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Image downloaded successfully.')),
-    );
+    // var status = await Permission.storage.status;
+    // if (status != PermissionStatus.granted) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(content: Text('Storage permission is required to download images.')),
+    //   );
+    //   return;
+    // }
+    // // Proceed with the download
+    // var file = await DefaultCacheManager().getSingleFile(url);
+    // final savedDir = await getDownloadsDirectory();
+    // final savedImage = await file.copy('${savedDir.path}/$imageName.jpg');
+    // print('Image saved at: ${savedImage.path}');
+    //
+    // // Notify the user that the image has been downloaded
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(content: Text('Image downloaded successfully.')),
+    // );
   }
 
   void _showImageDialog(BuildContext context, String imageUrl) {

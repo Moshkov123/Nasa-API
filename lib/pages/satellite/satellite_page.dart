@@ -51,7 +51,7 @@ class _SatellitePageState extends State<SatellitePage> {
                 return SatellitePhotoItem(
                   imageUrl: photo['url'],
                   title: photo['title'],
-                  explanation: photo['explanation'],
+                  explanation: photo['explanation'], insertDataCallback: (String title, String url, String explanation) {  },
                 );
               }
             },
